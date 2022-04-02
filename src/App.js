@@ -1,39 +1,30 @@
 import { useState } from "react";
+import { useFormik } from "formik";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
+  
+  const initialValues = { name: "", email: "", password: "" };
+
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
   });
-
-  const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    
-    console.log(data);
-
-    setData({
-      name: "",
-      email: "",
-      password: "",
-    });
-  };
 
   return (
     <section>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
           name="name"
-          value={data.name}
-          onChange={changeHandler}
+          value={formik.values.name}
+          onChange={formik.handleChange}
         />
 
         <label htmlFor="email">Email</label>
@@ -41,8 +32,8 @@ function App() {
           type="email"
           id="email"
           name="email"
-          value={data.email}
-          onChange={changeHandler}
+          value={formik.values.email}
+          onChange={formik.handleChange}
         />
 
         <label htmlFor="password">Password</label>
@@ -50,11 +41,11 @@ function App() {
           type="password"
           id="password"
           name="password"
-          value={data.password}
-          onChange={changeHandler}
+          value={formik.values.password}
+          onChange={formik.handleChange}
         />
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </section>
   );
