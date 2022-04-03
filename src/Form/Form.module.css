@@ -1,0 +1,43 @@
+.form {
+  width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--secondary-color);
+}
+
+.form input {
+  padding: 0.3rem;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid var(--secondary-color);
+}
+
+.form label {
+  margin-top: 1.5rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.form input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.submit {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 2rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.validation {
+  color: red;
+  margin-left: 1rem;
+}
