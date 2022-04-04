@@ -1,8 +1,20 @@
 import style from "./Form.module.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { useState } from "react";
 
 const Form = () => {
+  const data = {
+    name: "soheil",
+    email: "test@mail.com",
+    phone: "09123456789",
+    gender: "male",
+    password: "Soheil@1",
+    passwordConfirm: "Soheil@1",
+  };
+
+  const [autofill, setAutofill] = useState(null);
+
   const initialValues = {
     name: "",
     email: "",
@@ -47,9 +59,10 @@ const Form = () => {
   });
 
   const formik = useFormik({
-    initialValues,
+    initialValues: autofill || initialValues,
     onSubmit,
     validationSchema,
+    enableReinitialize: true,
   });
 
   return (
@@ -150,6 +163,15 @@ const Form = () => {
           />
           <label htmlFor="female">Female</label>
         </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            setAutofill(data);
+          }}
+        >
+          Autofill
+        </button>
 
         <button className={style.submit} type="submit">
           Submit
