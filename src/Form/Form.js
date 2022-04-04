@@ -7,6 +7,7 @@ const Form = () => {
     name: "",
     email: "",
     phone: "",
+    gender: "",
     password: "",
     passwordConfirm: "",
   };
@@ -28,7 +29,9 @@ const Form = () => {
       .string()
       .min(11)
       .max(11)
-      .matches(/^[0-9]/, "invalid phone format"),
+      .matches(/^[0-9]/, "invalid phone format")
+      .required("phone is require"),
+    gender: yup.string(),
     password: yup
       .string()
       .matches(/^(?=.*[0-9])/, "One number")
@@ -126,6 +129,27 @@ const Form = () => {
           value={formik.values.password}
           {...formik.getFieldProps("passwordConfirm")}
         />
+
+        <div className={style.gender}>
+          <input
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+            onChange={formik.handleChange}
+            checked={formik.values.gender === "male"}
+          />
+          <label htmlFor="male">Male</label>
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+            value="female"
+            onChange={formik.handleChange}
+            checked={formik.values.gender === "female"}
+          />
+          <label htmlFor="female">Female</label>
+        </div>
 
         <button className={style.submit} type="submit">
           Submit

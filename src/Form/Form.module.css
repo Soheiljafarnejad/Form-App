@@ -41,3 +41,12 @@
   color: red;
   margin-left: 1rem;
 }
+
+.gender {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+.gender label{
+  margin: 0 1rem;
+}
