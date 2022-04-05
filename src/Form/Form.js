@@ -5,8 +5,16 @@ import { useState } from "react";
 import Input from "../common/Input";
 import RadioInput from "../common/RadioInput";
 import SelectOption from "../common/SelectOption";
+import TermsBox from "../common/TermsBox";
+import CheckBox from "../common/CheckBox";
 
 const Form = () => {
+
+  const checkBoxOptions = [
+    { label: "React.js", value: "react" },
+    { label: "javaScript", value: "js" },
+  ];
+
   const radioOptions = [
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },
@@ -29,6 +37,8 @@ const Form = () => {
     password: "Soheil@1",
     passwordConfirm: "Soheil@1",
     country: "IR",
+    interest: ["react"],
+    terms: true,
   };
 
   const initialValues = {
@@ -39,6 +49,8 @@ const Form = () => {
     password: "",
     passwordConfirm: "",
     country: "",
+    interest: [],
+    terms: false,
   };
 
   const onSubmit = (values) => {
@@ -74,6 +86,11 @@ const Form = () => {
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Password Confirm is require"),
     country: yup.string().required("country is require"),
+    interest: yup.array().min(1).required("select one interest"),
+    terms: yup
+      .boolean()
+      .oneOf([true], "Must Accept Terms and Conditions")
+      .required("Must Accept Terms and Conditions"),
   });
 
   const formik = useFormik({
@@ -140,6 +157,20 @@ const Form = () => {
           options={selectOption}
           formik={formik}
           className={`${style.formControl} ${style.select}`}
+        />
+
+        <CheckBox
+          name="interest"
+          options={checkBoxOptions}
+          formik={formik}
+          className={`${style.formControl} ${style.radio}`}
+        />
+
+        <TermsBox
+          name="terms"
+          label="Accept the terms and conditions"
+          formik={formik}
+          className={`${style.formControl} ${style.radio}`}
         />
 
         <button
