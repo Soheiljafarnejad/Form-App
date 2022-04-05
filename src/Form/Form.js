@@ -2,8 +2,25 @@ import style from "./Form.module.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useState } from "react";
+import Input from "../common/Input";
+import RadioInput from "../common/RadioInput";
+import SelectOption from "../common/SelectOption";
 
 const Form = () => {
+  const radioOptions = [
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+  ];
+
+  const selectOption = [
+    { label: "Choose a country...", value: "" },
+    { label: "Iran", value: "IR" },
+    { label: "Germany", value: "GR" },
+    { label: "USA", value: "US" },
+  ];
+
+  const [autofill, setAutofill] = useState(null);
+
   const data = {
     name: "soheil",
     email: "test@mail.com",
@@ -11,9 +28,8 @@ const Form = () => {
     gender: "male",
     password: "Soheil@1",
     passwordConfirm: "Soheil@1",
+    country: "IR",
   };
-
-  const [autofill, setAutofill] = useState(null);
 
   const initialValues = {
     name: "",
@@ -22,6 +38,7 @@ const Form = () => {
     gender: "",
     password: "",
     passwordConfirm: "",
+    country: "",
   };
 
   const onSubmit = (values) => {
@@ -43,7 +60,7 @@ const Form = () => {
       .max(11)
       .matches(/^[0-9]/, "invalid phone format")
       .required("phone is require"),
-    gender: yup.string(),
+    gender: yup.string().required("gender is require"),
     password: yup
       .string()
       .matches(/^(?=.*[0-9])/, "One number")
@@ -56,6 +73,7 @@ const Form = () => {
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Password Confirm is require"),
+    country: yup.string().required("country is require"),
   });
 
   const formik = useFormik({
@@ -68,103 +86,64 @@ const Form = () => {
   return (
     <section>
       <form className={style.form} onSubmit={formik.handleSubmit} noValidate>
-        <label htmlFor="name">
-          <p>Name</p>
-          {formik.errors.name && formik.touched.name && (
-            <span className={style.validation}>{formik.errors.name}</span>
-          )}
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formik.values.name}
-          {...formik.getFieldProps("name")}
+        <Input
+          name={"name"}
+          label="Name"
+          formik={formik}
+          className={style.formControl}
         />
 
-        <label htmlFor="email">
-          <p>Email</p>
-          {formik.errors.email && formik.touched.email && (
-            <span className={style.validation}>{formik.errors.email}</span>
-          )}
-        </label>
-        <input
+        <Input
+          name={"email"}
+          label="Email"
           type="email"
-          id="email"
-          name="email"
-          value={formik.values.email}
-          {...formik.getFieldProps("email")}
+          formik={formik}
+          className={style.formControl}
         />
 
-        <label htmlFor="phone">
-          <p>Phone</p>
-          {formik.errors.phone && formik.touched.phone && (
-            <span className={style.validation}>{formik.errors.phone}</span>
-          )}
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
+        <Input
+          name={"phone"}
+          label="Phone"
+          type="tell"
+          formik={formik}
           minLength={11}
           maxLength={11}
           inputMode="numeric"
-          value={formik.values.phone}
-          {...formik.getFieldProps("phone")}
+          className={style.formControl}
         />
 
-        <label htmlFor="password">
-          <p>Password</p>
-          {formik.errors.password && formik.touched.password && (
-            <span className={style.validation}>{formik.errors.password}</span>
-          )}
-        </label>
-        <input
+        <Input
+          name={"password"}
+          label="Password"
           type="password"
-          id="password"
-          name="password"
-          value={formik.values.password}
-          {...formik.getFieldProps("password")}
+          formik={formik}
+          className={style.formControl}
         />
 
-        <label htmlFor="passwordConfirm">
-          <p>Password Confirm</p>
-          {formik.errors.passwordConfirm && formik.touched.passwordConfirm && (
-            <span className={style.validation}>
-              {formik.errors.passwordConfirm}
-            </span>
-          )}
-        </label>
-        <input
+        <Input
+          name={"passwordConfirm"}
+          label="PasswordConfirm"
           type="password"
-          id="passwordConfirm"
-          name="passwordConfirm"
-          value={formik.values.password}
-          {...formik.getFieldProps("passwordConfirm")}
+          formik={formik}
+          className={style.formControl}
         />
 
-        <div className={style.gender}>
-          <input
-            type="radio"
-            name="gender"
-            id="male"
-            value="male"
-            onChange={formik.handleChange}
-            checked={formik.values.gender === "male"}
-          />
-          <label htmlFor="male">Male</label>
-          <input
-            type="radio"
-            name="gender"
-            id="female"
-            value="female"
-            onChange={formik.handleChange}
-            checked={formik.values.gender === "female"}
-          />
-          <label htmlFor="female">Female</label>
-        </div>
+        <RadioInput
+          name="gender"
+          options={radioOptions}
+          formik={formik}
+          className={`${style.formControl} ${style.radio}`}
+        />
+
+        <SelectOption
+          name="country"
+          options={selectOption}
+          formik={formik}
+          className={`${style.formControl} ${style.select}`}
+        />
 
         <button
+          className={style.btn}
           type="button"
           onClick={() => {
             setAutofill(data);
@@ -173,7 +152,15 @@ const Form = () => {
           Autofill
         </button>
 
-        <button className={style.submit} type="submit">
+        <button
+          className={style.btn}
+          type="reset"
+          onClick={() => setAutofill(initialValues)}
+        >
+          reset
+        </button>
+
+        <button className={style.btn} type="submit">
           Submit
         </button>
       </form>

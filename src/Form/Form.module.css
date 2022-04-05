@@ -7,46 +7,45 @@
   border: 2px solid var(--secondary-color);
 }
 
-.form input {
+.formControl {
+  margin: 1rem 0;
+}
+
+.formControl input {
   padding: 0.3rem;
   border-radius: 5px;
   outline: none;
   border: 2px solid var(--secondary-color);
+  width: 100%;
 }
 
-.form label {
-  margin-top: 1.5rem;
-  margin-bottom: 0.2rem;
-  display: flex;
-  align-items: center;
-}
-
-.form input:focus {
+.formControl input:focus {
   border: 2px solid var(--primary-color);
 }
 
-.submit {
+.formControl.radio input {
+  width: auto;
+}
+
+.formControl.radio label {
+  margin-right: 1rem;
+  margin-left: 0.2rem;
+}
+
+.formControl.select select {
+  outline: none;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.btn {
   border-radius: 5px;
   border: none;
   outline: none;
   padding: 1rem 2rem;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
-}
-
-.validation {
-  color: red;
-  margin-left: 1rem;
-}
-
-.gender {
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-}
-.gender label{
-  margin: 0 1rem;
 }
