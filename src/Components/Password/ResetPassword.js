@@ -12,7 +12,7 @@ const ResetPassword = () => {
 
   const onSubmit = (values) => {
     // post to Api
-    toast.success("موفقیت آمیز بود.");
+    toast.success("ایمیل حاوی لینک برای شما ارسال شد.");
   };
 
   const validationSchema = yup.object({

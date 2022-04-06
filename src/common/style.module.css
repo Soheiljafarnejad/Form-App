@@ -35,9 +35,7 @@ span {
   border-radius: 5px;
   transition: var(--transition);
 }
-.tick:hover {
-  background-color: var(--primary-color);
-}
+
 .checked {
   background-color: var(--primary-color) !important;
 }

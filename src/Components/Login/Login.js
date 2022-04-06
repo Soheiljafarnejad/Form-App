@@ -16,7 +16,7 @@ const Login = () => {
 
   const onSubmit = (values) => {
     // post to Api
-    toast.success("موفقیت آمیز بود.")
+    toast.success("ورود با موفقیت انجام شد.")
   };
 
   const validationSchema = yup.object({
