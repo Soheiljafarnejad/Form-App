@@ -1,8 +1,10 @@
 import React from "react";
+import { BiErrorCircle } from "react-icons/bi";
+import style from "./style.module.css";
 
 const RadioInput = ({ formik, name, options, className }) => {
   return (
-    <div className={className}>
+    <div className={`${style.formControl} ${className||""}`}>
       {options.map((item) => {
         return (
           <React.Fragment key={item.value}>
@@ -14,13 +16,22 @@ const RadioInput = ({ formik, name, options, className }) => {
               onChange={formik.handleChange}
               checked={formik.values[name] === item.value}
             />
-            <label htmlFor={item.value}>{item.label}</label>
+            <label htmlFor={item.value}>
+              {" "}
+              <BiErrorCircle />
+              {item.label}
+            </label>
           </React.Fragment>
         );
       })}
-      {formik.errors[name] && formik.touched[name] && (
-        <span className="error">{formik.errors[name]}</span>
-      )}
+      <span
+        className={`${
+          formik.errors[name] && formik.touched[name] ? style.error : ""
+        }`}
+      >
+        <BiErrorCircle />
+        {formik.errors[name]}
+      </span>
     </div>
   );
 };

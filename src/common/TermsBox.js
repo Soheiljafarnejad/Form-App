@@ -1,6 +1,12 @@
+import { BiErrorCircle } from "react-icons/bi";
+import style from "./style.module.css";
+import { TiTick } from "react-icons/ti";
+
 const TermsBox = ({ className, formik, name, label }) => {
   return (
-    <div className={className}>
+    <div
+      className={`${style.formControl} ${style.checkBox} ${className || ""}`}
+    >
       <input
         type="checkbox"
         id={name}
@@ -9,10 +15,18 @@ const TermsBox = ({ className, formik, name, label }) => {
         {...formik.getFieldProps(name)}
         checked={formik.values[name]}
       />
-      <label htmlFor={name}>{label}</label>
-      {formik.errors[name] && formik.touched[name] && (
-        <span className="error">{formik.errors[name]}</span>
-      )}
+      <label htmlFor={name}>
+        <div
+          className={`${style.tick} ${formik.values[name] && style.checked}`}
+        >
+          <TiTick />
+        </div>
+        {label}
+      </label>
+      <span className={`${formik.errors[name] ? style.error : ""}`}>
+        <BiErrorCircle />
+        {formik.errors[name]}
+      </span>
     </div>
   );
 };

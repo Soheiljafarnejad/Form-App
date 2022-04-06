@@ -1,0 +1,51 @@
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 12rem;
+}
+
+.title {
+  align-self: flex-start;
+}
+
+.title p {
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+form {
+  width: 100%;
+}
+
+.formControl {
+  margin: 2rem 0;
+}
+
+.nameBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.nameBox div {
+  width: 100%;
+  margin: 0 0.25rem;
+}
+
+.verification {
+  display: flex;
+  align-items: flex-start;
+}
+
+.verification div {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.verification button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  min-width: 120px;
+}

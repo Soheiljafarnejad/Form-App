@@ -1,7 +1,10 @@
+import { BiErrorCircle } from "react-icons/bi";
+import style from "./style.module.css";
+
 import React from "react";
 const CheckBox = ({ formik, className, name, options }) => {
   return (
-    <div className={className}>
+    <div className={`${style.formControl} ${className||""}`}>
       {options.map((item) => {
         return (
           <React.Fragment key={item.value}>
@@ -13,10 +16,18 @@ const CheckBox = ({ formik, className, name, options }) => {
               onChange={formik.handleChange}
               checked={formik.values[name].includes(item.value)}
             />
-            <label htmlFor={name}>{item.label}</label>
-            {formik.errors[name] && formik.touched[name] && (
-              <span className="error">{formik.errors[name]}</span>
-            )}
+            <label htmlFor={name}>
+            
+              {item.label}
+              </label>
+            <span
+              className={`${
+                formik.errors[name] && formik.touched[name] ? style.error : ""
+              }`}
+            >
+              <BiErrorCircle />
+              {formik.errors[name]}
+            </span>
           </React.Fragment>
         );
       })}

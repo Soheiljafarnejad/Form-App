@@ -1,11 +1,14 @@
-import Form from "./Form/Form";
+import Signup from "./Components/SignUp/SignUp";
 import "./App.css";
 
 function App() {
   return (
-    <section>
-      <Form />
-    </section>
+    <main className="app">
+      <section className="pages">
+        <Signup />
+      </section>
+      <section className="cover"></section>
+    </main>
   );
 }
 
