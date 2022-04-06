@@ -4,6 +4,8 @@ import TermsBox from "../../common/TermsBox";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
   const initialValues = {
@@ -13,7 +15,8 @@ const Login = () => {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // post to Api
+    toast.success("موفقیت آمیز بود.")
   };
 
   const validationSchema = yup.object({

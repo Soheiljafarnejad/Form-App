@@ -4,6 +4,7 @@ import Login from "./Components/Login/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import ResetPassword from "./Components/Password/ResetPassword";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/password-reset" element={<ResetPassword />} />
         </Routes>
       </Layout>
+      <Toaster />
     </BrowserRouter>
   );
 }

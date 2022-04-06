@@ -4,6 +4,9 @@ import * as yup from "yup";
 import Input from "../../common/Input";
 import TermsBox from "../../common/TermsBox";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import Timer from "../../common/Timer/Timer";
+import { useState } from "react";
 const Signup = () => {
   const initialValues = {
     email: "",
@@ -17,7 +20,8 @@ const Signup = () => {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // post to Api
+    toast.success("موفقیت آمیز بود.");
   };
 
   const validationSchema = yup.object({
@@ -83,6 +87,12 @@ const Signup = () => {
     validationSchema,
   });
 
+  const [verify, setVerify] = useState(false);
+
+  const verifyHandler = () => {
+    if (formik.values.phone && !formik.errors.phone) setVerify(true);
+  };
+
   return (
     <section className={style.signUp}>
       <div className={style.title}>
@@ -127,7 +137,17 @@ const Signup = () => {
         </div>
 
         <div className={`${style.verification} ${style.formControl}`}>
-          <button type="button">ارسال کد</button>
+          <button
+            className={`${
+              verify || (!formik.values.phone || formik.errors.phone)
+                ? style.verify
+                : ""
+            }`}
+            onClick={verifyHandler}
+            type="button"
+          >
+            {verify ? <Timer min="2" setState={setVerify} /> : <p>ارسال کد</p>}
+          </button>
           <Input
             name="verification"
             type="tel"

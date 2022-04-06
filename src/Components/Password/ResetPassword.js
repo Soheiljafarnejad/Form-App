@@ -3,6 +3,7 @@ import Input from "../../common/Input";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ResetPassword = () => {
   const initialValues = {
@@ -10,7 +11,8 @@ const ResetPassword = () => {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // post to Api
+    toast.success("موفقیت آمیز بود.");
   };
 
   const validationSchema = yup.object({

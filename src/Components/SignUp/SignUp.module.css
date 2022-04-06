@@ -63,6 +63,15 @@ form {
   background-color: var(--primary-color);
 }
 
+.verify {
+  cursor: no-drop !important;
+  opacity: 0.5;
+}
+.verify:hover{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 @media screen and (max-width: 992px) {
   .signUp {
     width: 100%;
@@ -89,7 +98,7 @@ form {
   .nameBox {
     flex-direction: column;
   }
-  .nameBox > div{
+  .nameBox > div {
     margin-bottom: 1rem !important;
   }
   .formControl {

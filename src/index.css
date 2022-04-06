@@ -9,12 +9,6 @@
 :root {
   --primary-color: #2343a3;
   --secondary-color: rgba(35, 67, 163, 0.08);
-  --blue: #3a54aa;
-  --blue-dark: #071a84;
-  --color: #e7ecf4;
-  --color: #bbc4d9;
-  --color: #bb9047;
-  --color: #b0b3c4;
   --text-color: #667494;
   --title-color: #364163;
   --transition: all 0.3s ease-in-out;
@@ -32,6 +26,6 @@ button {
   color: var(--title-color);
 }
 
-h2{
+h2 {
   font-size: 3.5rem;
 }
