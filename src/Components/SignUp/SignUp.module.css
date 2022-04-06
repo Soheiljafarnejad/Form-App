@@ -50,6 +50,12 @@ form {
   min-width: 120px;
 }
 
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .submit{
   color: white;
   background-color: var(--primary-color);

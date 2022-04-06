@@ -1,0 +1,19 @@
+.app {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.cover {
+  background-image: url("../../assets/img/Snow.svg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: cover;
+  width: 43%;
+}
+
+.pages {
+  background-color: white;
+  width: 57%;
+}

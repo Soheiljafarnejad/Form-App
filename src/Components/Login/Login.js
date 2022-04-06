@@ -3,6 +3,7 @@ import Input from "../../common/Input";
 import TermsBox from "../../common/TermsBox";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const initialValues = {
@@ -39,7 +40,7 @@ const Login = () => {
   return (
     <section className={style.login}>
       <div className={style.title}>
-        <h2>ورود به حساب کاربری</h2>
+        <h2>ورود به پورتال</h2>
         <p>لطفا نام کاربری و رمز عبور خود را وارد کنید.</p>
       </div>
 
@@ -62,6 +63,7 @@ const Login = () => {
             formik={formik}
             props={{ minLength: 3, maxLength: 64, placeholder: "کلمه عبور" }}
           />
+          <Link to="/password-reset">رمزتان را فراموش کرده اید؟</Link>
         </div>
 
         <div className={`${style.formControl} ${style.remember}`}>
@@ -72,9 +74,12 @@ const Login = () => {
           />
         </div>
 
-        <button className={style.submit} type="submit">
-          ورود
-        </button>
+        <div className={style.footer}>
+          <button className={style.submit} type="submit">
+            ورود
+          </button>
+          <Link to="sign-up">حساب کاربری نساخته اید؟ ثبت نام</Link>
+        </div>
       </form>
     </section>
   );

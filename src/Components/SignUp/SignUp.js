@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Input from "../../common/Input";
 import TermsBox from "../../common/TermsBox";
+import { Link } from "react-router-dom";
 const Signup = () => {
   const initialValues = {
     email: "",
@@ -70,7 +71,10 @@ const Signup = () => {
       .required("کد تایید را به صورت صحیح وارد کنید."),
     terms: yup
       .boolean()
-      .oneOf([true], "لطفا موافقت با شرایط و استفاده از خدمات را تایید نمایید."),
+      .oneOf(
+        [true],
+        "لطفا موافقت با شرایط و استفاده از خدمات را تایید نمایید."
+      ),
   });
 
   const formik = useFormik({
@@ -168,9 +172,13 @@ const Signup = () => {
           />
         </div>
 
-        <button className={style.submit} type="submit">
-          تکمیل ثبت نام
-        </button>
+        <div className={style.footer}>
+          <button className={style.submit} type="submit">
+            تکمیل ثبت نام
+          </button>
+
+          <Link to="/">حساب کاربری دارید؟ ورود به پورتال</Link>
+        </div>
       </form>
     </section>
   );

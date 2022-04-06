@@ -20,7 +20,21 @@
   margin: 2rem 0;
 }
 
+.formControl a{
+  display: block;
+  text-align: end;
+  font-size: 1.2rem;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .submit{
     color: white;
     background-color: var(--primary-color);
 }
+
+
