@@ -84,10 +84,10 @@ const Signup = () => {
   });
 
   return (
-    <section className={style.signup}>
+    <section className={style.signUp}>
       <div className={style.title}>
         <h2>عضویت</h2>
-        <p>لطفا برای عضویت در پورتال و خرید اطلاعات این فرم را تکمیل کنید.</p>
+        <p>لطفا برای عضویت در پورتال اطلاعات این فرم را تکمیل کنید.</p>
       </div>
 
       <form onSubmit={formik.handleSubmit} noValidate>
@@ -108,7 +108,7 @@ const Signup = () => {
 
         <div className={style.formControl}>
           <Input
-            label="آدرس ایمیل(نام کاربری)"
+            label="آدرس ایمیل (نام کاربری)"
             name="email"
             type="email"
             formik={formik}

@@ -1,4 +1,5 @@
-.signup {
+.signUp {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +38,7 @@ form {
 .verification {
   display: flex;
   align-items: flex-start;
+  flex-wrap: nowrap;
 }
 
 .verification div {
@@ -50,13 +52,47 @@ form {
   min-width: 120px;
 }
 
-.footer{
+.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.submit{
+.submit {
   color: white;
   background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 992px) {
+  .signUp {
+    width: 100%;
+    padding: 5rem;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .signUp {
+    width: 100%;
+    padding: 5rem 2rem;
+    border-radius: 5px;
+  }
+
+  .footer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .submit {
+    margin-bottom: 2rem;
+  }
+  .nameBox {
+    flex-direction: column;
+  }
+  .nameBox > div{
+    margin-bottom: 1rem !important;
+  }
+  .formControl {
+    margin: 1rem 0;
+  }
 }

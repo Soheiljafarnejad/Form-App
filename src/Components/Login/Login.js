@@ -47,7 +47,7 @@ const Login = () => {
       <form onSubmit={formik.handleSubmit} noValidate>
         <div className={style.formControl}>
           <Input
-            label="آدرس ایمیل(نام کاربری)"
+            label="آدرس ایمیل (نام کاربری)"
             name="email"
             type="email"
             formik={formik}

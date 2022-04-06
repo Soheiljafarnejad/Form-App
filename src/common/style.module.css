@@ -6,7 +6,7 @@ span {
 .error {
   visibility: visible;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 0.5rem;
   font-size: 1.2rem;
   color: red;

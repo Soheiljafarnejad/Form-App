@@ -17,3 +17,38 @@
   background-color: white;
   width: 57%;
 }
+
+@media screen and (max-width: 992px) {
+  .cover {
+    display: none;
+  }
+  .pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem;
+    width: 100%;
+    background-image: url("../../assets/img/Snow.svg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .login {
+    width: 100%;
+    padding: 5rem 8rem;
+    border-radius: 5px;
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .pages {
+    padding: 5rem 2rem;
+  }
+}
+
