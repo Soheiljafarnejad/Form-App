@@ -1,0 +1,26 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 15rem;
+  height: 100%;
+}
+
+.title {
+  align-self: flex-start;
+}
+
+.title p {
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.formControl {
+  margin: 2rem 0;
+}
+
+.submit{
+    color: white;
+    background-color: var(--primary-color);
+}

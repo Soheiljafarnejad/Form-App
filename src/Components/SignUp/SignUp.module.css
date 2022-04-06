@@ -45,7 +45,12 @@ form {
 }
 
 .verification button {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-left: 1rem;
   min-width: 120px;
+}
+
+.submit{
+  color: white;
+  background-color: var(--primary-color);
 }

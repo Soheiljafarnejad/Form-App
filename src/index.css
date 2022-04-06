@@ -41,7 +41,7 @@ button {
   color: var(--primary-color);
   border: none;
   outline: none;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 20px;
   transition: var(--transition);
 }
