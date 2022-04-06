@@ -36,16 +36,6 @@
   }
 }
 
-
-@media screen and (max-width: 992px) {
-  .login {
-    width: 100%;
-    padding: 5rem 8rem;
-    border-radius: 5px;
-  }
-}
-
-
 @media screen and (max-width: 576px) {
   .pages {
     padding: 5rem 2rem;

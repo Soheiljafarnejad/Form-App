@@ -63,7 +63,7 @@ const Login = () => {
             formik={formik}
             props={{ minLength: 3, maxLength: 64, placeholder: "کلمه عبور" }}
           />
-          <Link to="/password-reset">رمزتان را فراموش کرده اید؟</Link>
+          <Link to="/password-reset">کلمه عبور را فراموش کرده اید؟</Link>
         </div>
 
         <div className={`${style.formControl} ${style.remember}`}>
