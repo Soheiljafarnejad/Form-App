@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Timer from "../../common/Timer/Timer";
 import { useState } from "react";
+
 const Signup = () => {
   const initialValues = {
     email: "",
@@ -33,23 +34,14 @@ const Signup = () => {
     password: yup
       .string()
       .required("رمز عبور نمی تواند خالی باشد.")
-      .matches(
-        /^(?=.*[a-z])/,
-        "رمز عبور باید داری حداقل یک حرف کوچک لاتین باشد."
-      )
-      .matches(
-        /^(?=.*[A-Z])/,
-        "رمز عبور باید داری حداقل یک حرف بزرگ لاتین باشد."
-      )
+      .matches(/^(?=.*[a-z])/, "رمز عبور باید داری حداقل یک حرف کوچک لاتین باشد.")
+      .matches(/^(?=.*[A-Z])/, "رمز عبور باید داری حداقل یک حرف بزرگ لاتین باشد.")
       .matches(/^(?=.*[0-9])/, "رمز عبور باید دارای حداقل یک عدد باشد")
       .min(8, "رمز عبور نمی تواند کمتر از 8 کاراکتر باشد.")
       .max(64, "رمز عبور نمی تواند بیشتر از 64 کاراکتر باشد."),
     passwordConfirm: yup
       .string()
-      .oneOf(
-        [yup.ref("password"), null],
-        "تایید رمز عبور با رمز عبور برابر نیست."
-      )
+      .oneOf([yup.ref("password"), null], "تایید رمز عبور با رمز عبور برابر نیست.")
       .required("تایید رمز عبور نمی تواند خالی باشد."),
 
     firstName: yup
@@ -73,12 +65,7 @@ const Signup = () => {
       .min(6, "کد تایید را به صورت صحیح وارد کنید.")
       .max(6, "کد تایید را به صورت صحیح وارد کنید.")
       .required("کد تایید را به صورت صحیح وارد کنید."),
-    terms: yup
-      .boolean()
-      .oneOf(
-        [true],
-        "لطفا موافقت با شرایط و استفاده از خدمات را تایید نمایید."
-      ),
+    terms: yup.boolean().oneOf([true], "لطفا موافقت با شرایط و استفاده از خدمات را تایید نمایید."),
   });
 
   const formik = useFormik({
@@ -94,112 +81,101 @@ const Signup = () => {
   };
 
   return (
-    <section className={style.signUp}>
-      <div className={style.title}>
-        <h2>عضویت</h2>
-        <p>لطفا برای عضویت در پورتال اطلاعات این فرم را تکمیل کنید.</p>
-      </div>
-
-      <form onSubmit={formik.handleSubmit} noValidate>
-        <div className={`${style.nameBox} ${style.formControl}`}>
-          <Input
-            name="firstName"
-            formik={formik}
-            label="نام"
-            props={{ placeholder: "سهیل" }}
-          />
-          <Input
-            name="lastName"
-            formik={formik}
-            label="نام خانوادگی"
-            props={{ placeholder: "جعفرنژاد" }}
-          />
+        <section className={style.signUp}>
+        <div className={style.title}>
+          <h2>عضویت</h2>
+          <p>لطفا برای عضویت در پورتال اطلاعات این فرم را تکمیل کنید.</p>
         </div>
 
-        <div className={style.formControl}>
-          <Input
-            label="آدرس ایمیل (نام کاربری)"
-            name="email"
-            type="email"
-            formik={formik}
-            props={{ placeholder: "example@gmail.com" }}
-          />
-        </div>
+        <form onSubmit={formik.handleSubmit} noValidate>
+          <div className={`${style.nameBox} ${style.formControl}`}>
+            <Input name="firstName" formik={formik} label="نام" props={{ placeholder: "سهیل" }} />
+            <Input
+              name="lastName"
+              formik={formik}
+              label="نام خانوادگی"
+              props={{ placeholder: "جعفرنژاد" }}
+            />
+          </div>
 
-        <div className={style.formControl}>
-          <Input
-            label="تلفن همراه"
-            name="phone"
-            type="tel"
-            formik={formik}
-            props={{ minLength: 11, maxLength: 11, placeholder: "شماره همراه" }}
-          />
-        </div>
+          <div className={style.formControl}>
+            <Input
+              label="آدرس ایمیل (نام کاربری)"
+              name="email"
+              type="email"
+              formik={formik}
+              props={{ placeholder: "example@gmail.com" }}
+            />
+          </div>
 
-        <div className={`${style.verification} ${style.formControl}`}>
-          <button
-            className={`${
-              verify || (!formik.values.phone || formik.errors.phone)
-                ? style.verify
-                : ""
-            }`}
-            onClick={verifyHandler}
-            type="button"
-          >
-            {verify ? <Timer min="2" setState={setVerify} /> : <p>ارسال کد</p>}
-          </button>
-          <Input
-            name="verification"
-            type="tel"
-            formik={formik}
-            props={{
-              minLength: 6,
-              maxLength: 6,
-              placeholder: "کد پیامک شده را وارد کنید",
-            }}
-          />
-        </div>
+          <div className={style.formControl}>
+            <Input
+              label="تلفن همراه"
+              name="phone"
+              type="tel"
+              formik={formik}
+              props={{ minLength: 11, maxLength: 11, placeholder: "شماره همراه" }}
+            />
+          </div>
 
-        <div className={style.formControl}>
-          <Input
-            label="کلمه عبور"
-            name="password"
-            type="password"
-            formik={formik}
-            props={{ minLength: 3, maxLength: 64, placeholder: "کلمه عبور" }}
-          />
-        </div>
+          <div className={`${style.verification} ${style.formControl}`}>
+            <button
+              className={`${
+                verify || !formik.values.phone || formik.errors.phone ? style.verify : ""
+              }`}
+              onClick={verifyHandler}
+              type="button"
+            >
+              {verify ? <Timer min="2" setState={setVerify} /> : <p>ارسال کد</p>}
+            </button>
+            <Input
+              name="verification"
+              type="tel"
+              formik={formik}
+              props={{
+                minLength: 6,
+                maxLength: 6,
+                placeholder: "کد پیامک شده را وارد کنید",
+              }}
+            />
+          </div>
 
-        <div className={style.formControl}>
-          <Input
-            label="تایید کلمه عبور"
-            name="passwordConfirm"
-            type="password"
-            formik={formik}
-            props={{
-              minLength: 3,
-              maxLength: 64,
-              placeholder: "تایید کلمه عبور",
-            }}
-          />
-        </div>
+          <div className={style.formControl}>
+            <Input
+              label="کلمه عبور"
+              name="password"
+              type="password"
+              formik={formik}
+              props={{ minLength: 3, maxLength: 64, placeholder: "کلمه عبور" }}
+            />
+          </div>
 
-        <div className={`${style.formControl} ${style.terms}`}>
-          <TermsBox
-            formik={formik}
-            name="terms"
-            label="موافقت با شرایط و استفاده از خدمات"
-          />
-        </div>
+          <div className={style.formControl}>
+            <Input
+              label="تایید کلمه عبور"
+              name="passwordConfirm"
+              type="password"
+              formik={formik}
+              props={{
+                minLength: 3,
+                maxLength: 64,
+                placeholder: "تایید کلمه عبور",
+              }}
+            />
+          </div>
 
-        <div className={style.footer}>
-          <button className={style.submit} type="submit">
-            تکمیل ثبت نام
-          </button>
+          <div className={`${style.formControl} ${style.terms}`}>
+            <TermsBox formik={formik} name="terms" label="موافقت با شرایط و استفاده از خدمات" />
+          </div>
 
-          <Link to="/">حساب کاربری دارید؟ ورود به پورتال</Link>
-        </div>
-      </form>
+          <div className={style.footer}>
+            <button className={style.submit} type="submit">
+              تکمیل ثبت نام
+            </button>
+
+            <Link to="/">حساب کاربری دارید؟ ورود به پورتال</Link>
+          </div>
+        </form>
     </section>
   );
 };

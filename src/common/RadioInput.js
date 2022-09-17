@@ -17,7 +17,6 @@ const RadioInput = ({ formik, name, options, className }) => {
               checked={formik.values[name] === item.value}
             />
             <label htmlFor={item.value}>
-              {" "}
               <BiErrorCircle />
               {item.label}
             </label>

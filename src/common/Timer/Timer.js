@@ -29,7 +29,6 @@ const Timer = ({ setState, min = 0, sec = 0 }) => {
         <p>00:00</p>
       ) : (
         <p>
-          {" "}
           {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
         </p>
       )}
